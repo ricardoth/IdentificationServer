@@ -1,0 +1,37 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "IdentificationServer.Infraestructure/1.0.0": {
+        "dependencies": {
+          "IdentificationServer.Core": "1.0.0"
+        },
+        "runtime": {
+          "IdentificationServer.Infraestructure.dll": {}
+        }
+      },
+      "IdentificationServer.Core/1.0.0": {
+        "runtime": {
+          "IdentificationServer.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IdentificationServer.Infraestructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IdentificationServer.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

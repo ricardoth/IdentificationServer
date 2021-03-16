@@ -1,0 +1,9 @@
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\bin\Debug\netstandard2.1\IdentificationServer.Core.deps.json
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\bin\Debug\netstandard2.1\IdentificationServer.Core.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\bin\Debug\netstandard2.1\IdentificationServer.Core.pdb
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.csprojAssemblyReference.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.AssemblyInfoInputs.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.AssemblyInfo.cs
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.csproj.CoreCompileInputs.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.pdb
