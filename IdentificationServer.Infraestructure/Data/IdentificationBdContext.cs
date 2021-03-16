@@ -21,7 +21,7 @@ namespace IdentificationServer.Infraestructure.Data
         public virtual DbSet<UsuarioPerfil> UsuarioPerfils { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        { 
+        {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
             modelBuilder.Entity<Perfil>(entity =>
