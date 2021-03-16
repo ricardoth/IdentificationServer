@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Infraestructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
@@ -11,12 +9,17 @@ namespace IdentificationServer.WebApi.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository)
         {
-            List<string> usuarios = new List<string>();
-            usuarios.Add("Ricardo");
-            usuarios.Add("Daniel");
+            _usuarioRepository = usuarioRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var usuarios = await _usuarioRepository.GetUsuarios();
             return Ok(usuarios);
         }
     }
