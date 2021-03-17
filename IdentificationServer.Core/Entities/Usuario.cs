@@ -9,6 +9,7 @@ namespace IdentificationServer.Core.Entities
     {
         public Usuario()
         {
+            MenuUsuarios = new HashSet<MenuUsuario>();
             UsuarioPerfils = new HashSet<UsuarioPerfil>();
         }
 
@@ -23,6 +24,7 @@ namespace IdentificationServer.Core.Entities
         public string Telefono { get; set; }
         public bool EsActivo { get; set; }
 
+        public virtual ICollection<MenuUsuario> MenuUsuarios { get; set; }
         public virtual ICollection<UsuarioPerfil> UsuarioPerfils { get; set; }
     }
 }

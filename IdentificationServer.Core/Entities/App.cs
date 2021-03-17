@@ -5,17 +5,18 @@ using System.Collections.Generic;
 
 namespace IdentificationServer.Core.Entities
 {
-    public partial class Perfil
+    public partial class App
     {
-        public Perfil()
+        public App()
         {
-            UsuarioPerfils = new HashSet<UsuarioPerfil>();
+            Menus = new HashSet<Menu>();
         }
 
-        public int IdPerfil { get; set; }
+        public int IdApp { get; set; }
         public string Nombre { get; set; }
+        public string Descripcion { get; set; }
         public bool EsActivo { get; set; }
 
-        public virtual ICollection<UsuarioPerfil> UsuarioPerfils { get; set; }
+        public virtual ICollection<Menu> Menus { get; set; }
     }
 }

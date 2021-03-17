@@ -25,5 +25,10 @@ namespace IdentificationServer.Infraestructure.Repositories
             return usuarios;
         }
 
+        public async Task<Usuario> GetUsuario(int id)
+        {
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+            return usuario;
+        }
     }
 }

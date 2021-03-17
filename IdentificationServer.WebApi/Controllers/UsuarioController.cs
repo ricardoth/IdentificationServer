@@ -22,5 +22,16 @@ namespace IdentificationServer.WebApi.Controllers
             var usuarios = await _usuarioRepository.GetUsuarios();
             return Ok(usuarios);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var usuario = await _usuarioRepository.GetUsuario(id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return Ok(usuario);
+        }
     }
 }

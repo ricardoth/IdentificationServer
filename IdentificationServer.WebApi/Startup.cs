@@ -37,7 +37,7 @@ namespace IdentificationServer.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IdentificationServer.WebApi", Version = "v1" });
             });
 
-            services.AddDbContext<IdentificationBdContext>(options => 
+            services.AddDbContext<IdentificationBdContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
 
             services.ConfigureDependecies();
