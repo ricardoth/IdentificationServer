@@ -6,3 +6,4 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\n
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.csproj.CoreCompileInputs.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.pdb
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Core\obj\Debug\netstandard2.1\IdentificationServer.Core.csprojAssemblyReference.cache

@@ -1,5 +1,5 @@
-﻿using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Infraestructure.Repositories;
+﻿using IdentificationServer.Core.Entities;
+using IdentificationServer.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -31,6 +31,14 @@ namespace IdentificationServer.WebApi.Controllers
             {
                 return NotFound();
             }
+            return Ok(usuario);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(Usuario usuario)
+        {
+            await _usuarioRepository.Agregar(usuario);
+
             return Ok(usuario);
         }
     }

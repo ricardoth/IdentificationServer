@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -12,6 +13,7 @@ namespace IdentificationServer.Core.Entities
             MenuUsuarios = new HashSet<MenuUsuario>();
         }
 
+        [Key]
         public int IdMenu { get; set; }
         public int IdApp { get; set; }
         public int Padre { get; set; }

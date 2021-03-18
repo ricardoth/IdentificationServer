@@ -15,8 +15,6 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
 
             entity.ToTable("MenuUsuario");
 
-            entity.Property(e => e.IdMenuUsuario).ValueGeneratedNever();
-
             entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
 
             entity.HasOne(d => d.IdMenuNavigation)

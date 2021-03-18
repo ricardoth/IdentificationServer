@@ -13,6 +13,7 @@ namespace IdentificationServer.WebApi.Extensions
         public static void ConfigureDependecies(this IServiceCollection services) 
         {
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IPerfilRepository, PerfilRepository>();
         }
     }
 }

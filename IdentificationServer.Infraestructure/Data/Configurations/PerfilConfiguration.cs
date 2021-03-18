@@ -13,7 +13,7 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
         {
             entity.HasKey(e => e.IdPerfil);
 
-            entity.ToTable("Perfil");
+            entity.ToTable("Perfil", "dbo");
 
             entity.Property(e => e.Nombre)
                 .IsRequired()

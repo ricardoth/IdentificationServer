@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace IdentificationServer.Core.Interfaces
 {
-    public interface IUsuarioRepository
+    public interface IPerfilRepository
     {
-        Task<IEnumerable<Usuario>> GetUsuarios();
-        Task<Usuario> GetUsuario(int id);
-        Task Agregar(Usuario usuario);
+        Task<IEnumerable<Perfil>> GetPerfils();
+        Task<Perfil> Agregar(Perfil perfil);
     }
 }

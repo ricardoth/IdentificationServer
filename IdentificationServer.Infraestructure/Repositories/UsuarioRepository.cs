@@ -30,5 +30,11 @@ namespace IdentificationServer.Infraestructure.Repositories
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
             return usuario;
         }
+
+        public async Task Agregar(Usuario usuario)
+        {
+            _context.Usuarios.Add(usuario);
+            await _context.SaveChangesAsync();
+        }
     }
 }

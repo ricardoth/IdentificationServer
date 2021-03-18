@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Reflection;
 using IdentificationServer.Core.Entities;
-using IdentificationServer.Infraestructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -28,14 +28,8 @@ namespace IdentificationServer.Infraestructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
-
-            modelBuilder.ApplyConfiguration(new AppConfiguration());
-            modelBuilder.ApplyConfiguration(new MenuConfiguration());
-            modelBuilder.ApplyConfiguration(new MenuUsuarioConfiguration());
-            modelBuilder.ApplyConfiguration(new PerfilConfiguration());
-            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
-            modelBuilder.ApplyConfiguration(new UsuarioPerfilConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+   
     }
 }

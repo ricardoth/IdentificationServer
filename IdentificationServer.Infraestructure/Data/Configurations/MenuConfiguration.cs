@@ -15,8 +15,6 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
 
             entity.ToTable("Menu");
 
-            entity.Property(e => e.IdMenu).ValueGeneratedNever();
-
             entity.Property(e => e.Nombre)
                 .IsRequired()
                 .HasMaxLength(100)

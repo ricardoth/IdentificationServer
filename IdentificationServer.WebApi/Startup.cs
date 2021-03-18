@@ -31,11 +31,18 @@ namespace IdentificationServer.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            //services.AddControllers();
+            //services.AddMvc().AddNewtonsoftJson();
+
+            services.AddControllers().AddNewtonsoftJson(opt => {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IdentificationServer.WebApi", Version = "v1" });
             });
+
 
             services.AddDbContext<IdentificationBdContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
