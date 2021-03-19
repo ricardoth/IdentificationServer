@@ -9,6 +9,7 @@ namespace IdentificationServer.Core.Interfaces
     public interface IPerfilRepository
     {
         Task<IEnumerable<Perfil>> GetPerfils();
+        Task<Perfil> GetPerfil(int id);
         Task<Perfil> Agregar(Perfil perfil);
     }
 }

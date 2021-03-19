@@ -24,6 +24,12 @@ namespace IdentificationServer.Infraestructure.Repositories
             return perfiles;
         }
 
+        public async Task<Perfil> GetPerfil(int id)
+        {
+            var perfil = await _context.Perfils.SingleOrDefaultAsync(x => x.IdPerfil == id);
+            return perfil;
+        }
+
         public async Task<Perfil> Agregar(Perfil perfil)
         {
             _context.Perfils.Add(perfil);

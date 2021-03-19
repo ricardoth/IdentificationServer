@@ -66,3 +66,5 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
