@@ -15,11 +15,11 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
 
             entity.ToTable("UsuarioPerfil");
 
-            entity.HasOne(d => d.IdPerfilNavigation)
-                .WithMany(p => p.UsuarioPerfils)
-                .HasForeignKey(d => d.IdPerfil)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_UsuarioPerfil_Perfil");
+            //entity.HasOne(d => d.IdPerfilNavigation)
+            //    .WithMany(p => p.UsuarioPerfils)
+            //    .HasForeignKey(d => d.IdPerfil)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_UsuarioPerfil_Perfil");
 
             entity.HasOne(d => d.IdUsuarioNavigation)
                 .WithMany(p => p.UsuarioPerfils)

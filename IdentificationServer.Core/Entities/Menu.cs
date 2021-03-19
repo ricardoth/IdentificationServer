@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -10,10 +9,9 @@ namespace IdentificationServer.Core.Entities
     {
         public Menu()
         {
-            MenuUsuarios = new HashSet<MenuUsuario>();
+            MenuPerfils = new HashSet<MenuPerfil>();
         }
 
-        [Key]
         public int IdMenu { get; set; }
         public int IdApp { get; set; }
         public int Padre { get; set; }
@@ -23,6 +21,6 @@ namespace IdentificationServer.Core.Entities
         public bool EsActivo { get; set; }
 
         public virtual App IdAppNavigation { get; set; }
-        public virtual ICollection<MenuUsuario> MenuUsuarios { get; set; }
+        public virtual ICollection<MenuPerfil> MenuPerfils { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace IdentificationServer.Infraestructure.Data
 
         public virtual DbSet<App> Apps { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<MenuUsuario> MenuUsuarios { get; set; }
+        public virtual DbSet<MenuPerfil> MenuPerfils { get; set; }
         public virtual DbSet<Perfil> Perfils { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<UsuarioPerfil> UsuarioPerfils { get; set; }

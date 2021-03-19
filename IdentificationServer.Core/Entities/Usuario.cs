@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -11,11 +9,9 @@ namespace IdentificationServer.Core.Entities
     {
         public Usuario()
         {
-            MenuUsuarios = new HashSet<MenuUsuario>();
             UsuarioPerfils = new HashSet<UsuarioPerfil>();
         }
 
-        [Key]
         public int IdUsuario { get; set; }
         public int Rut { get; set; }
         public string Dv { get; set; }
@@ -27,7 +23,6 @@ namespace IdentificationServer.Core.Entities
         public string Telefono { get; set; }
         public bool EsActivo { get; set; }
 
-        public virtual ICollection<MenuUsuario> MenuUsuarios { get; set; }
         public virtual ICollection<UsuarioPerfil> UsuarioPerfils { get; set; }
     }
 }

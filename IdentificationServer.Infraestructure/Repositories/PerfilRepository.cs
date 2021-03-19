@@ -12,12 +12,10 @@ namespace IdentificationServer.Infraestructure.Repositories
     public class PerfilRepository : IPerfilRepository
     {
         public readonly IdentificationBdContext _context;
-        private DbSet<Perfil> _dbSet;
 
         public PerfilRepository(IdentificationBdContext context)
         {
             this._context = context;
-            this._dbSet = _context.Set<Perfil>();
         }
 
         public async Task<IEnumerable<Perfil>> GetPerfils()
@@ -26,19 +24,11 @@ namespace IdentificationServer.Infraestructure.Repositories
             return perfiles;
         }
 
-        public async Task<Perfil> Agregar(Perfil entity)
+        public async Task<Perfil> Agregar(Perfil perfil)
         {
-            _dbSet.Add(entity);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception excepcion)
-            {
-                //_logger.LogError($"Error en {nameof(Agregar)}: " + excepcion.Message);
-                return null;
-            }
-            return entity;
+            _context.Perfils.Add(perfil);
+            await _context.SaveChangesAsync();
+            return perfil;
         }
     }
 }

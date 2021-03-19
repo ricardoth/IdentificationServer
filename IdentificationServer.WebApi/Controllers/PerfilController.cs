@@ -30,12 +30,10 @@ namespace IdentificationServer.WebApi.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Perfil>> Post(Perfil perfil)
+        public async Task<IActionResult> Post(Perfil perfil)
         {
-               await _perfilRepository.Agregar(perfil);
-
-                return perfil;
-            
+            await _perfilRepository.Agregar(perfil);
+            return Ok(perfil);
         }
     }
 }

@@ -38,7 +38,6 @@ namespace IdentificationServer.WebApi.Controllers
         public async Task<IActionResult> Post(Usuario usuario)
         {
             await _usuarioRepository.Agregar(usuario);
-
             return Ok(usuario);
         }
     }
