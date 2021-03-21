@@ -2,6 +2,7 @@
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,7 +30,8 @@ namespace IdentificationServer.WebApi.Controllers
         {
             var perfiles = await _perfilRepository.GetPerfils();
             var perfilesDtos = _mapper.Map<IEnumerable<PerfilDto>>(perfiles);
-            return Ok(perfilesDtos);
+            var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
@@ -37,7 +39,8 @@ namespace IdentificationServer.WebApi.Controllers
         {
             var perfil = await _perfilRepository.GetPerfil(id);
             var perfilDto = _mapper.Map<PerfilDto>(perfil);
-            return Ok(perfilDto);
+            var response = new ApiResponse<PerfilDto>(perfilDto);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -47,7 +50,28 @@ namespace IdentificationServer.WebApi.Controllers
         {
             var perfil = _mapper.Map<Perfil>(perfilDto);
             await _perfilRepository.Agregar(perfil);
-            return Ok(perfil);
+            perfilDto = _mapper.Map<PerfilDto>(perfil);
+            var response = new ApiResponse<PerfilDto>(perfilDto);
+            return Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(int id, PerfilDto perfilDto)
+        {
+            var perfil = _mapper.Map<Perfil>(perfilDto);
+            perfil.IdPerfil = id;
+            var result = await _perfilRepository.Actualizar(perfil);
+
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _perfilRepository.Eliminar(id);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
         }
     }
 }

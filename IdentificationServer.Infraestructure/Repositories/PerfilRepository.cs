@@ -36,5 +36,21 @@ namespace IdentificationServer.Infraestructure.Repositories
             await _context.SaveChangesAsync();
             return perfil;
         }
+
+        public async Task<bool> Actualizar(Perfil perfil)
+        {
+            var perfilBd = await GetPerfil(perfil.IdPerfil);
+            perfilBd.Nombre = perfil.Nombre;
+            perfilBd.EsActivo = perfil.EsActivo;
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> Eliminar(int id)
+        {
+            var perfilBd = await GetPerfil(id);
+            _context.Perfils.Remove(perfilBd);
+            int rowAffected = await _context.SaveChangesAsync();
+            return rowAffected > 0;
+        }
     }
 }

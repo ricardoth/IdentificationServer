@@ -11,5 +11,7 @@ namespace IdentificationServer.Core.Interfaces
         Task<IEnumerable<Perfil>> GetPerfils();
         Task<Perfil> GetPerfil(int id);
         Task<Perfil> Agregar(Perfil perfil);
+        Task<bool> Actualizar(Perfil perfil);
+        Task<bool> Eliminar(int id);
     }
 }
