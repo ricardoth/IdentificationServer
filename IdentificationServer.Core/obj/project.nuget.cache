@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zFV25EA+TGJ3Bz0LNHQPY3Y5JgWQjXYla4Asfvj7YznU19dd/rjWwP6GyYgWgBr+eD+fVxkt/D3pUx015yrFfQ==",
+  "dgSpecHash": "2Jpu9i39WTRkVelxG3qJ1yDNpMliLuqB2w/uR4MvWpYYVK/BQZAYVSM7haDxMz+ELf3l3j6Pab18AtfsZxy7yw==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.Core\\IdentificationServer.Core.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Ricardo\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

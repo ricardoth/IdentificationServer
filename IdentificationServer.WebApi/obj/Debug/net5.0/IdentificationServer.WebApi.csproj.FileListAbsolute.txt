@@ -68,3 +68,8 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll

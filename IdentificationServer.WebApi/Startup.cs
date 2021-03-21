@@ -1,7 +1,9 @@
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Infraestructure.Data;
+using IdentificationServer.Infraestructure.Filters;
 using IdentificationServer.Infraestructure.Repositories;
 using IdentificationServer.WebApi.Extensions;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,8 +32,12 @@ namespace IdentificationServer.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson(options => {
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }).ConfigureApiBehaviorOptions(options =>
+            {
+                //options.SuppressModelStateInvalidFilter = true;
             });
             
             services.AddSwaggerGen(c =>
@@ -40,10 +46,20 @@ namespace IdentificationServer.WebApi
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddDbContext<IdentificationBdContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
+                options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
 
             services.ConfigureDependecies();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<ValidationFilter>();
+            }).AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,7 +12,7 @@ namespace IdentificationServer.Infraestructure.Mappings
         public AutoMapperProfile()
         {
             CreateMap<Perfil, PerfilDto>().ReverseMap();
-            //CreateMap<Usuario, UsuarioDto>().ReverseMap();
+            CreateMap<Usuario, UsuarioDto>().ReverseMap();
         }
     }
 }
