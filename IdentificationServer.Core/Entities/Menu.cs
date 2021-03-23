@@ -5,14 +5,13 @@ using System.Collections.Generic;
 
 namespace IdentificationServer.Core.Entities
 {
-    public partial class Menu
+    public partial class Menu : BaseEntity
     {
         public Menu()
         {
             MenuPerfils = new HashSet<MenuPerfil>();
         }
 
-        public int IdMenu { get; set; }
         public int IdApp { get; set; }
         public int Padre { get; set; }
         public string Nombre { get; set; }

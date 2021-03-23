@@ -11,7 +11,10 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<App> entity)
         {
-            entity.HasKey(e => e.IdApp);
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                .HasColumnName("IdApp");
 
             entity.ToTable("App");
 

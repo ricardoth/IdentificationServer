@@ -5,14 +5,13 @@ using System.Collections.Generic;
 
 namespace IdentificationServer.Core.Entities
 {
-    public partial class Usuario
+    public partial class Usuario : BaseEntity
     {
         public Usuario()
         {
             UsuarioPerfils = new HashSet<UsuarioPerfil>();
         }
 
-        public int IdUsuario { get; set; }
         public int Rut { get; set; }
         public string Dv { get; set; }
         public string Nombre { get; set; }

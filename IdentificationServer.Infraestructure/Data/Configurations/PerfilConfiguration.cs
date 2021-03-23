@@ -11,7 +11,9 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Perfil> entity)
         {
-            entity.HasKey(e => e.IdPerfil);
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .HasColumnName("IdPerfil");
 
             entity.ToTable("Perfil", "dbo");
 

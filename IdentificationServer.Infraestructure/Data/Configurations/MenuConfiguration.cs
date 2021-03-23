@@ -11,7 +11,10 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Menu> entity)
         {
-            entity.HasKey(e => e.IdMenu);
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                .HasColumnName("IdMenu");
 
             entity.ToTable("Menu");
 

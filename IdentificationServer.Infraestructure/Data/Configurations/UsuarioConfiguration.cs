@@ -11,9 +11,9 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Usuario> entity)
         {
-            entity.HasKey(e => e.IdUsuario);
-            entity.Property(e => e.IdUsuario)
-                .ValueGeneratedOnAdd();
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .HasColumnName("IdUsuario");
 
             entity.ToTable("Usuario");
 

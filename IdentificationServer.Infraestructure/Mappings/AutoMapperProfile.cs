@@ -13,6 +13,7 @@ namespace IdentificationServer.Infraestructure.Mappings
         {
             CreateMap<Perfil, PerfilDto>().ReverseMap();
             CreateMap<Usuario, UsuarioDto>().ReverseMap();
+            CreateMap<MenuPerfil, MenuPerfilDto>().ReverseMap();
         }
     }
 }

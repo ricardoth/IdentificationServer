@@ -12,10 +12,10 @@ namespace IdentificationServer.WebApi.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IRepository<Usuario> _usuarioRepository;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository, IMapper mapper)
+        public UsuarioController(IRepository<Usuario> usuarioRepository, IMapper mapper)
         {
             _usuarioRepository = usuarioRepository;
             _mapper = mapper;
@@ -24,7 +24,7 @@ namespace IdentificationServer.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var usuarios = await _usuarioRepository.GetUsuarios();
+            var usuarios = await _usuarioRepository.GetAll();
             var usuariosDtos = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
             return Ok(usuariosDtos);
         }
@@ -32,7 +32,7 @@ namespace IdentificationServer.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuario(id);
+            var usuario = await _usuarioRepository.GetById(id);
             var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
             return Ok(usuarioDto);
         }
@@ -45,7 +45,7 @@ namespace IdentificationServer.WebApi.Controllers
                 return BadRequest();
             }
             var usuario = _mapper.Map<Usuario>(usuarioDto);
-            await _usuarioRepository.Agregar(usuario);
+            await _usuarioRepository.Add(usuario);
             return Ok(usuario);
         }
     }

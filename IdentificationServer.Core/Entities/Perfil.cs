@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IdentificationServer.Core.Entities
 {
-    public partial class Perfil
+    public partial class Perfil : BaseEntity
     {
         public Perfil()
         {
@@ -13,7 +13,6 @@ namespace IdentificationServer.Core.Entities
             UsuarioPerfils = new HashSet<UsuarioPerfil>();
         }
 
-        public int IdPerfil { get; set; }
         public string Nombre { get; set; }
         public bool EsActivo { get; set; }
 

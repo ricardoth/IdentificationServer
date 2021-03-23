@@ -1,4 +1,5 @@
 ﻿using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.Services;
 using IdentificationServer.Infraestructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,8 +13,10 @@ namespace IdentificationServer.WebApi.Extensions
     {
         public static void ConfigureDependecies(this IServiceCollection services) 
         {
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<IPerfilRepository, PerfilRepository>();
+            services.AddTransient<IPerfilService, PerfilService>();
+            services.AddTransient<IMenuPerfilRepository, MenuPerfilRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
 }
