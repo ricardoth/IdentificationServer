@@ -2,6 +2,7 @@
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,29 +13,33 @@ namespace IdentificationServer.WebApi.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IRepository<Usuario> _usuarioRepository;
+        private readonly IUsuarioService _usuarioService;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IRepository<Usuario> usuarioRepository, IMapper mapper)
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
         {
-            _usuarioRepository = usuarioRepository;
+            _usuarioService = usuarioService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var usuarios = await _usuarioRepository.GetAll();
+            var usuarios = await _usuarioService.GetUsuarios();
             var usuariosDtos = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
-            return Ok(usuariosDtos);
+
+            var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDtos);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var usuario = await _usuarioRepository.GetById(id);
+            var usuario = await _usuarioService.GetUsuario(id);
             var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
-            return Ok(usuarioDto);
+
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -45,8 +50,31 @@ namespace IdentificationServer.WebApi.Controllers
                 return BadRequest();
             }
             var usuario = _mapper.Map<Usuario>(usuarioDto);
-            await _usuarioRepository.Add(usuario);
-            return Ok(usuario);
+            await _usuarioService.Agregar(usuario);
+            usuarioDto = _mapper.Map<UsuarioDto>(usuario);
+
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
+            return Ok(response);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(int id,UsuarioDto usuarioDto)
+        {
+            var usuario = _mapper.Map<Usuario>(usuarioDto);
+            usuario.Id = id;
+
+            var result = await _usuarioService.Actualizar(usuario);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _usuarioService.Eliminar(id);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+
     }
 }

@@ -14,6 +14,7 @@ namespace IdentificationServer.WebApi.Extensions
         public static void ConfigureDependecies(this IServiceCollection services) 
         {
             services.AddTransient<IPerfilService, PerfilService>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMenuPerfilRepository, MenuPerfilRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
