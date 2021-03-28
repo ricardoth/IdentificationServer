@@ -14,6 +14,8 @@ namespace IdentificationServer.Infraestructure.Repositories
         private readonly IdentificationBdContext _context;
         private readonly IRepository<Perfil> _perfilRepository;
         private readonly IRepository<Usuario> _usuarioRepository;
+        private readonly IUsuarioPerfilRepository _usuarioPerfilRepository;
+
 
         public UnitOfWork(IdentificationBdContext context)
         {
@@ -21,8 +23,8 @@ namespace IdentificationServer.Infraestructure.Repositories
         }
 
         public IRepository<Perfil> PerfilRepository => _perfilRepository ?? new BaseRepository<Perfil>(_context);
-
         public IRepository<Usuario> UsuarioRepository => _usuarioRepository ?? new BaseRepository<Usuario>(_context);
+        public IUsuarioPerfilRepository UsuarioPerfilRepository => _usuarioPerfilRepository ?? new UsuarioPerfilRepository(_context);
 
         public void Dispose()
         {

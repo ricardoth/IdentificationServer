@@ -11,6 +11,7 @@ namespace IdentificationServer.Core.Interfaces
     {
         IRepository<Perfil> PerfilRepository { get; } 
         IRepository<Usuario> UsuarioRepository { get; }
+        IUsuarioPerfilRepository UsuarioPerfilRepository { get; }
 
         //Se deben incluir todos los repositorios genéricos
         void SaveChanges();

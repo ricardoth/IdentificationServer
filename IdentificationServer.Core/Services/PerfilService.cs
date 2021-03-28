@@ -17,9 +17,9 @@ namespace IdentificationServer.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Perfil>> GetPerfils()
+        public IEnumerable<Perfil> GetPerfils()
         {
-            return await _unitOfWork.PerfilRepository.GetAll();
+            return _unitOfWork.PerfilRepository.GetAll();
         }
 
         public async Task<Perfil> GetPerfil(int id)
@@ -34,17 +34,20 @@ namespace IdentificationServer.Core.Services
                 throw new Exception("Debe escribir un nombre coherente");
             }
             await _unitOfWork.PerfilRepository.Add(perfil);
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task<bool> Actualizar(Perfil perfil)
         {
-            await _unitOfWork.PerfilRepository.Update(perfil);
+            _unitOfWork.PerfilRepository.Update(perfil);
+            await _unitOfWork.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> Eliminar(int id)
         {
             await _unitOfWork.PerfilRepository.Delete(id);
+            await _unitOfWork.SaveChangesAsync();
             return true;
         }
     }

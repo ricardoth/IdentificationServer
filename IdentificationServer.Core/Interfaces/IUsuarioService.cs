@@ -9,7 +9,7 @@ namespace IdentificationServer.Core.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<IEnumerable<Usuario>> GetUsuarios();
+        IEnumerable<Usuario> GetUsuarios();
         Task<Usuario> GetUsuario(int id);
         Task Agregar(Usuario usuario);
         Task<bool> Actualizar(Usuario usuario);

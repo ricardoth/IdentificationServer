@@ -26,9 +26,9 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPerfils()
+        public IActionResult GetPerfils()
         {
-            var perfiles = await _perfilService.GetPerfils();
+            var perfiles = _perfilService.GetPerfils();
             var perfilesDtos = _mapper.Map<IEnumerable<PerfilDto>>(perfiles);
             var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos);
             return Ok(response);

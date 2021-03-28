@@ -17,9 +17,9 @@ namespace IdentificationServer.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Usuario>> GetUsuarios()
+        public IEnumerable<Usuario> GetUsuarios()
         {
-            return await _unitOfWork.UsuarioRepository.GetAll();
+            return _unitOfWork.UsuarioRepository.GetAll();
         }
 
         public async Task<Usuario> GetUsuario(int id)
@@ -30,17 +30,20 @@ namespace IdentificationServer.Core.Services
         public async Task Agregar(Usuario usuario)
         {
             await _unitOfWork.UsuarioRepository.Add(usuario);
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task<bool> Actualizar(Usuario usuario)
         {
-            await _unitOfWork.UsuarioRepository.Update(usuario);
+            _unitOfWork.UsuarioRepository.Update(usuario);
+            await _unitOfWork.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> Eliminar(int id)
         {
             await _unitOfWork.UsuarioRepository.Delete(id);
+            await _unitOfWork.SaveChangesAsync();
             return true;
         }
     }

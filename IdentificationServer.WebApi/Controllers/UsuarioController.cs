@@ -23,9 +23,9 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var usuarios = await _usuarioService.GetUsuarios();
+            var usuarios = _usuarioService.GetUsuarios();
             var usuariosDtos = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
 
             var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDtos);
@@ -45,7 +45,7 @@ namespace IdentificationServer.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(UsuarioDto usuarioDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
