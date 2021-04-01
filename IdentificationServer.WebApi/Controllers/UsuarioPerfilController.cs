@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using IdentificationServer.Core.DTOs;
+using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +45,18 @@ namespace IdentificationServer.WebApi.Controllers
             var usuarioPerfilesDto = _mapper.Map<IEnumerable<UsuarioPerfilDto>>(usuarioPerfiles);
             var result = new ApiResponse<IEnumerable<UsuarioPerfilDto>>(usuarioPerfilesDto);
             return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(UsuarioPerfilDto usuarioPerfilDto)
+        {
+           
+            var usuarioPerfil = _mapper.Map<UsuarioPerfil>(usuarioPerfilDto);
+            await _usuarioPerfilService.Agregar(usuarioPerfil);
+            usuarioPerfilDto = _mapper.Map<UsuarioPerfilDto>(usuarioPerfil);
+
+            var response = new ApiResponse<UsuarioPerfilDto>(usuarioPerfilDto);
+            return Ok(response);
         }
 
     }

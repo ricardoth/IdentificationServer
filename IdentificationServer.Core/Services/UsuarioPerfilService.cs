@@ -1,4 +1,5 @@
 ﻿using IdentificationServer.Core.Entities;
+using IdentificationServer.Core.Exceptions;
 using IdentificationServer.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -28,20 +29,39 @@ namespace IdentificationServer.Core.Services
         }
 
        
-        public Task Agregar(UsuarioPerfil usuarioPerfil)
+        public async Task Agregar(UsuarioPerfil usuarioPerfil)
         {
-            throw new NotImplementedException();
+            var user = await _unitOfWork.UsuarioRepository.GetById(usuarioPerfil.IdUsuario);
+            var perfil = await _unitOfWork.PerfilRepository.GetById(usuarioPerfil.IdPerfil);
+
+            if (user == null)
+            {
+                throw new BusinessException("Usuario inexistente, no se puede crear la Relación");
+            }
+
+            if (perfil == null)
+            {
+                throw new BusinessException("Perfil inexistente, no se puede crear la Relación");
+            }
+
+
+            await _unitOfWork.UsuarioPerfilRepository.Add(usuarioPerfil);
+            await _unitOfWork.SaveChangesAsync();
         }
 
 
-        public Task<bool> Actualizar(UsuarioPerfil usuarioPerfil)
+        public async Task<bool> Actualizar(UsuarioPerfil usuarioPerfil)
         {
-            throw new NotImplementedException();
+            _unitOfWork.UsuarioPerfilRepository.Update(usuarioPerfil);
+            await _unitOfWork.SaveChangesAsync();
+            return true;
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.UsuarioPerfilRepository.Delete(id);
+            await _unitOfWork.SaveChangesAsync();
+            return true;
         }
 
        
