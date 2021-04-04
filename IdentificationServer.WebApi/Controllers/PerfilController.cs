@@ -2,12 +2,14 @@
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.QueryFilters;
 using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
@@ -26,9 +28,11 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetPerfils()
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public IActionResult GetPerfils([FromQuery]PerfilQueryFilter filtros)
         {
-            var perfiles = _perfilService.GetPerfils();
+            var perfiles = _perfilService.GetPerfils(filtros);
             var perfilesDtos = _mapper.Map<IEnumerable<PerfilDto>>(perfiles);
             var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos);
             return Ok(response);

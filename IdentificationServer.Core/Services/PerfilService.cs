@@ -1,5 +1,6 @@
 ﻿using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,25 @@ namespace IdentificationServer.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Perfil> GetPerfils()
+        public IEnumerable<Perfil> GetPerfils(PerfilQueryFilter filtros)
         {
-            return _unitOfWork.PerfilRepository.GetAll();
+            var perfiles = _unitOfWork.PerfilRepository.GetAll();
+
+            if (filtros.IdPerfil != null)
+            {
+                perfiles = perfiles.Where(x => x.Id == filtros.IdPerfil);
+            }
+
+            if (filtros.Nombre != null)
+            {
+                perfiles = perfiles.Where(x => x.Nombre.ToLower().Contains(filtros.Nombre.ToLower()));
+            }
+
+            if (filtros.EsActivo != null)
+            {
+                perfiles = perfiles.Where(x => x.EsActivo == filtros.EsActivo);
+            }
+            return perfiles;
         }
 
         public async Task<Perfil> GetPerfil(int id)

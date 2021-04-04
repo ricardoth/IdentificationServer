@@ -11,7 +11,9 @@ namespace IdentificationServer.Infraestructure.Mappings
     {
         public AutoMapperProfile()
         {
-            CreateMap<Perfil, PerfilDto>().ReverseMap();
+            CreateMap<Perfil, PerfilDto>()
+                .ForMember(dest => dest.IdPerfil, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
             CreateMap<Usuario, UsuarioDto>().ReverseMap();
             CreateMap<MenuPerfil, MenuPerfilDto>().ReverseMap();
             CreateMap<UsuarioPerfil, UsuarioPerfilDto>().ReverseMap();

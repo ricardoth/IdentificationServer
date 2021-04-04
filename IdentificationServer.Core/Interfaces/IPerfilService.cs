@@ -1,4 +1,5 @@
 ﻿using IdentificationServer.Core.Entities;
+using IdentificationServer.Core.QueryFilters;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace IdentificationServer.Core.Interfaces
 {
     public interface IPerfilService
     {
-        IEnumerable<Perfil> GetPerfils();
+        IEnumerable<Perfil> GetPerfils(PerfilQueryFilter filtros);
         Task<Perfil> GetPerfil(int id);
         Task Agregar(Perfil perfil);
         Task<bool> Actualizar(Perfil perfil);
