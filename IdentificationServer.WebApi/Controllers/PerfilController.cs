@@ -6,6 +6,7 @@ using IdentificationServer.Core.QueryFilters;
 using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,18 @@ namespace IdentificationServer.WebApi.Controllers
             var perfiles = _perfilService.GetPerfils(filtros);
             var perfilesDtos = _mapper.Map<IEnumerable<PerfilDto>>(perfiles);
             var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos);
+
+            var metaData = new
+            {
+                perfiles.TotalCount,
+                perfiles.PageSize,
+                perfiles.CurrentPage,
+                perfiles.TotalPages,
+                perfiles.HasNextPage,
+                perfiles.HasPreviousPage
+            };
+
+            Response.Headers.Add("x-Pagination", JsonConvert.SerializeObject(metaData));
             return Ok(response);
         }
 
