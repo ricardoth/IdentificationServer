@@ -1,4 +1,5 @@
-﻿using IdentificationServer.Core.Entities;
+﻿using IdentificationServer.Core.CustomEntities;
+using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Core.QueryFilters;
 using System;
@@ -18,7 +19,7 @@ namespace IdentificationServer.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Perfil> GetPerfils(PerfilQueryFilter filtros)
+        public PagedList<Perfil> GetPerfils(PerfilQueryFilter filtros)
         {
             var perfiles = _unitOfWork.PerfilRepository.GetAll();
 
@@ -36,7 +37,10 @@ namespace IdentificationServer.Core.Services
             {
                 perfiles = perfiles.Where(x => x.EsActivo == filtros.EsActivo);
             }
-            return perfiles;
+
+            var pagedPerfiles = PagedList<Perfil>.Create(perfiles, filtros.PageNumber, filtros.PageSize);
+
+            return pagedPerfiles;
         }
 
         public async Task<Perfil> GetPerfil(int id)
