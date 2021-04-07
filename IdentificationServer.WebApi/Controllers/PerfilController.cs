@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using IdentificationServer.Core.CustomEntities;
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Core.QueryFilters;
+using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,30 +23,39 @@ namespace IdentificationServer.WebApi.Controllers
     {
         private readonly IPerfilService _perfilService;
         private readonly IMapper _mapper;
+        private readonly IUriService _uriService;
 
-        public PerfilController(IPerfilService perfilService, IMapper mapper)
+        public PerfilController(IPerfilService perfilService, IMapper mapper, IUriService uriService)
         {
             this._perfilService = perfilService;
             this._mapper = mapper;
+            this._uriService = uriService;
         }
 
-        [HttpGet]
+        [HttpGet(Name = nameof(GetPerfils))]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public IActionResult GetPerfils([FromQuery]PerfilQueryFilter filtros)
         {
             var perfiles = _perfilService.GetPerfils(filtros);
             var perfilesDtos = _mapper.Map<IEnumerable<PerfilDto>>(perfiles);
-            var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos);
 
-            var metaData = new
+            var metaData = new MetaData
             {
-                perfiles.TotalCount,
-                perfiles.PageSize,
-                perfiles.CurrentPage,
-                perfiles.TotalPages,
-                perfiles.HasNextPage,
-                perfiles.HasPreviousPage
+                TotalCount = perfiles.TotalCount,
+                PageSize = perfiles.PageSize,
+                CurrentPage = perfiles.CurrentPage,
+                TotalPages = perfiles.TotalPages,
+                HasNextPage = perfiles.HasNextPage,
+                HasPreviousPage = perfiles.HasPreviousPage,
+                NextPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString(),
+                PreviousPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString()
+
+            };
+
+            var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos)
+            { 
+                Meta = metaData
             };
 
             Response.Headers.Add("x-Pagination", JsonConvert.SerializeObject(metaData));

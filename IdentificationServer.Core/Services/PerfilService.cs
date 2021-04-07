@@ -2,25 +2,30 @@
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Core.QueryFilters;
+using IdentificationServer.Infraestructure.Options;
+using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.Core.Services
 {
     public class PerfilService : IPerfilService
     {
-        private readonly IUnitOfWork _unitOfWork;    
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly PaginationOptions _paginationOptions;
 
-        public PerfilService(IUnitOfWork unitOfWork)
+        public PerfilService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> paginationOptions)
         {
             _unitOfWork = unitOfWork;
+            _paginationOptions = paginationOptions.Value;
         }
 
         public PagedList<Perfil> GetPerfils(PerfilQueryFilter filtros)
         {
+            filtros.PageNumber = filtros.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filtros.PageNumber;
+            filtros.PageSize = filtros.PageSize == 0 ? _paginationOptions.DefaultPageSize : filtros.PageNumber;
+
             var perfiles = _unitOfWork.PerfilRepository.GetAll();
 
             if (filtros.IdPerfil != null)

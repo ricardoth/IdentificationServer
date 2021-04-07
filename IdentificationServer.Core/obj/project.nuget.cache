@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2Jpu9i39WTRkVelxG3qJ1yDNpMliLuqB2w/uR4MvWpYYVK/BQZAYVSM7haDxMz+ELf3l3j6Pab18AtfsZxy7yw==",
+  "dgSpecHash": "dPNi5WwonvpQl/0WQqWcYqGMwjpCW7u0rIXOAbF7yq8ueCRR4/gocdXjDeq24iA6XmptLcRwR2jfcWY0lU3fCg==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.Core\\IdentificationServer.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

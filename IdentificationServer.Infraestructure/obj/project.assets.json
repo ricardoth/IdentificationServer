@@ -1944,6 +1944,9 @@
       "IdentificationServer.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
         "compile": {
           "bin/placeholder/IdentificationServer.Core.dll": {}
         },
