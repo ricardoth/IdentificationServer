@@ -73,3 +73,4 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

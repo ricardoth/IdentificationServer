@@ -3,11 +3,15 @@ using IdentificationServer.Core.Services;
 using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.Infraestructure.Repositories;
 using IdentificationServer.Infraestructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Extensions
@@ -28,6 +32,35 @@ namespace IdentificationServer.WebApi.Extensions
                 var request = accesor.HttpContext.Request;
                 var absoluteUri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
                 return new UriService(absoluteUri);
+            });
+        }
+
+        public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
+        {
+            //var jwtSettings = configuration.GetSection("Authentication");
+            //string secretKey = jwtSettings.GetValue<string>("SecretKey");
+            //int minutes = jwtSettings.GetValue<int>("MinutesToExpiration");
+            //string issuer = jwtSettings.GetValue<string>("Issuer");
+            //string audience = jwtSettings.GetValue<string>("Audience");
+
+            //var key = Encoding.ASCII.GetBytes(secretKey);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => 
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey =  true,
+                    ValidIssuer = configuration["Authentication:Issuer"],
+                    ValidAudience = configuration["Authentication:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:SecretKey"]))
+                };
             });
         }
     }
