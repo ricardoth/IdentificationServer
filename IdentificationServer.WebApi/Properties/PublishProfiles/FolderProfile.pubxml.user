@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-05-03T00:25:45.0906784Z;False|2021-05-02T20:24:41.2613890-04:00;True|2021-05-02T20:22:41.1891909-04:00;True|2021-05-02T20:17:49.6039756-04:00;True|2021-05-02T20:13:00.8611259-04:00;True|2021-05-02T20:11:18.0874146-04:00;</History>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="IdentificationBd">
+      <Value>Server=DESKTOP-2D77919%3bDatabase=IdentificationBd%3bIntegrated Security=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

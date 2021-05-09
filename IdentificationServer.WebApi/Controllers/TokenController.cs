@@ -1,12 +1,10 @@
 ﻿using IdentificationServer.Core.Entities;
-using Microsoft.AspNetCore.Http;
+using IdentificationServer.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,28 +16,32 @@ namespace IdentificationServer.WebApi.Controllers
     public class TokenController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public TokenController(IConfiguration configuration)
+        private readonly IAutenticationService _autenticationService;
+        public TokenController(IConfiguration configuration, IAutenticationService autenticationService)
         {
             _configuration = configuration;
+            _autenticationService = autenticationService;
         }
 
         [HttpPost]
-        public IActionResult Authentication(UserLogin login)
+        public async Task<IActionResult> Authentication(UserLogin login)
         {
-            if (IsValidUser(login))
+            var validation = await IsValidUser(login);
+            if (validation.Item1)
             {
-                var token = GenerateToken();
+                var token = GenerateToken(validation.Item2);
                 return Ok(new { token });
             }
             return NotFound();
         }
 
-        private bool IsValidUser(UserLogin login)
+        private async Task<(bool, Autentication)> IsValidUser(UserLogin login)
         {
-            return true;
+            var user = await _autenticationService.GetLoginByCredentials(login);
+            return (user != null, user);
         }
 
-        private string GenerateToken()
+        private string GenerateToken(Autentication autentication)
         {
             //Headers
             var _symetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Authentication:SecretKey"]));
@@ -49,10 +51,9 @@ namespace IdentificationServer.WebApi.Controllers
             //Claims
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, "Ricardo Tilleria"),
-                new Claim(ClaimTypes.Email, "ricardotilleriaochoa@gmail.com"),
-                new Claim(ClaimTypes.Role, "Administrador"),
-
+                new Claim(ClaimTypes.Name, autentication.UserName),
+                new Claim("User", autentication.User),
+                new Claim(ClaimTypes.Role, autentication.Role.ToString()),
             };
 
             //Payload

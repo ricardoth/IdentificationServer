@@ -25,6 +25,7 @@ namespace IdentificationServer.Infraestructure.Data
         public virtual DbSet<Perfil> Perfils { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<UsuarioPerfil> UsuarioPerfils { get; set; }
+        public virtual DbSet<Autentication> Autentications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

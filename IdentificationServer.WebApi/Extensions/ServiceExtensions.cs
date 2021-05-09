@@ -21,6 +21,7 @@ namespace IdentificationServer.WebApi.Extensions
         public static void ConfigureDependecies(this IServiceCollection services) 
         {
             services.AddScoped<IUsuarioPerfilRepository, UsuarioPerfilRepository>();
+            services.AddTransient<IAutenticationService, AutenticationService>();
             services.AddTransient<IUsuarioPerfilService, UsuarioPerfilService>();
             services.AddTransient<IPerfilService, PerfilService>();
             services.AddTransient<IUsuarioService, UsuarioService>();
