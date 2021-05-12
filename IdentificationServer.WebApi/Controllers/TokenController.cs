@@ -1,5 +1,6 @@
 ﻿using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Infraestructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,10 +18,12 @@ namespace IdentificationServer.WebApi.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IAutenticationService _autenticationService;
-        public TokenController(IConfiguration configuration, IAutenticationService autenticationService)
+        private readonly IPasswordService _passwordService;
+        public TokenController(IConfiguration configuration, IAutenticationService autenticationService, IPasswordService passwordService)
         {
             _configuration = configuration;
             _autenticationService = autenticationService;
+            _passwordService = passwordService;
         }
 
         [HttpPost]
@@ -38,7 +41,8 @@ namespace IdentificationServer.WebApi.Controllers
         private async Task<(bool, Autentication)> IsValidUser(UserLogin login)
         {
             var user = await _autenticationService.GetLoginByCredentials(login);
-            return (user != null, user);
+            var isValid = _passwordService.Check(user.Password, login.Password);
+            return (isValid, user);
         }
 
         private string GenerateToken(Autentication autentication)

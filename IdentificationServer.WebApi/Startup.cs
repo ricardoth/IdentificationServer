@@ -48,6 +48,7 @@ namespace IdentificationServer.WebApi
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.Configure<PaginationOptions>(Configuration.GetSection("Pagination"));
+            services.Configure<PasswordOptions>(Configuration.GetSection("PasswordOptions"));
 
             services.AddDbContext<IdentificationBdContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
@@ -72,6 +73,8 @@ namespace IdentificationServer.WebApi
                 };
 
             });
+
+            
 
             services.AddMvc(options =>
             {

@@ -3,6 +3,7 @@ using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Enumerations;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.WebApi.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -22,17 +23,20 @@ namespace IdentificationServer.WebApi.Controllers
     {
         private readonly IAutenticationService _autenticationService;
         private readonly IMapper _mapper;
+        private readonly IPasswordService _passwordService;
 
-        public AutenticationController(IAutenticationService autenticationService, IMapper mapper)
+        public AutenticationController(IAutenticationService autenticationService, IMapper mapper, IPasswordService passwordService)
         {
             _autenticationService = autenticationService;
             _mapper = mapper;
+            _passwordService = passwordService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(AutenticationDto autenticationDto)
         {
             var auth = _mapper.Map<Autentication>(autenticationDto);
+            auth.Password = _passwordService.Hash(auth.Password);
 
             await _autenticationService.RegisterUser(auth);
             autenticationDto = _mapper.Map<AutenticationDto>(auth);

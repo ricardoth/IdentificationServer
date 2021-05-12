@@ -2,6 +2,7 @@
 using IdentificationServer.Core.CustomEntities;
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
+using IdentificationServer.Core.Enumerations;
 using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Core.QueryFilters;
 using IdentificationServer.Infraestructure.Interfaces;
@@ -10,15 +11,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = nameof(RoleType.Administrator))]
     [Route("api/[controller]")]
     [ApiController]
     public class PerfilController : ControllerBase
@@ -52,7 +51,6 @@ namespace IdentificationServer.WebApi.Controllers
                 HasPreviousPage = perfiles.HasPreviousPage,
                 NextPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString(),
                 PreviousPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString()
-
             };
 
             var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos)
