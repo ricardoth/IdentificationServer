@@ -65,6 +65,10 @@ namespace IdentificationServer.Core.Services
 
         public async Task<bool> Actualizar(Perfil perfil)
         {
+            var perfilExistente = await _unitOfWork.PerfilRepository.GetById(perfil.Id);
+            perfilExistente.Nombre = perfil.Nombre;
+            perfilExistente.EsActivo = perfil.EsActivo;
+
             _unitOfWork.PerfilRepository.Update(perfil);
             await _unitOfWork.SaveChangesAsync();
             return true;
