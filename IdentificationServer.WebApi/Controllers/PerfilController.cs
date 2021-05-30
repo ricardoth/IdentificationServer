@@ -49,8 +49,8 @@ namespace IdentificationServer.WebApi.Controllers
                 TotalPages = perfiles.TotalPages,
                 HasNextPage = perfiles.HasNextPage,
                 HasPreviousPage = perfiles.HasPreviousPage,
-                NextPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString(),
-                PreviousPageUrl = _uriService.GetPostPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString()
+                NextPageUrl = _uriService.GetPerfilPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString(),
+                PreviousPageUrl = _uriService.GetPerfilPaginationUri(filtros, Url.RouteUrl(nameof(GetPerfils))).ToString()
             };
 
             var response = new ApiResponse<IEnumerable<PerfilDto>>(perfilesDtos)

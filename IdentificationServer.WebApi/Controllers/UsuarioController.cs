@@ -1,34 +1,62 @@
 ﻿using AutoMapper;
+using IdentificationServer.Core.CustomEntities;
 using IdentificationServer.Core.DTOs;
 using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.QueryFilters;
+using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.WebApi.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IMapper _mapper;
+        private readonly IUriService _uriService;
 
-        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper, IUriService uriService)
         {
             _usuarioService = usuarioService;
             _mapper = mapper;
+            _uriService = uriService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet(Name = nameof(GetUsuarios))]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public IActionResult GetUsuarios([FromQuery]UsuarioQueryFilter filtros)
         {
-            var usuarios = _usuarioService.GetUsuarios();
+            var usuarios = _usuarioService.GetUsuarios(filtros);
             var usuariosDtos = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
 
-            var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDtos);
+            var metaData = new MetaData
+            {
+                TotalCount = usuarios.TotalCount,
+                PageSize = usuarios.PageSize,
+                CurrentPage = usuarios.CurrentPage,
+                TotalPages = usuarios.TotalPages,
+                HasNextPage = usuarios.HasNextPage,
+                HasPreviousPage = usuarios.HasPreviousPage,
+                NextPageUrl = _uriService.GetUsuarioPaginationUri(filtros, Url.RouteUrl(nameof(GetUsuarios))).ToString(),
+                PreviousPageUrl = _uriService.GetUsuarioPaginationUri(filtros, Url.RouteUrl(nameof(GetUsuarios))).ToString(),
+            };
+
+            var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDtos)
+            {
+                Meta = metaData
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
             return Ok(response);
         }
 

@@ -24,7 +24,7 @@ namespace IdentificationServer.Core.Services
         public PagedList<Perfil> GetPerfils(PerfilQueryFilter filtros)
         {
             filtros.PageNumber = filtros.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filtros.PageNumber;
-            filtros.PageSize = filtros.PageSize == 0 ? _paginationOptions.DefaultPageSize : filtros.PageNumber;
+            filtros.PageSize = filtros.PageSize == 0 ? _paginationOptions.DefaultPageSize : filtros.PageSize;
 
             var perfiles = _unitOfWork.PerfilRepository.GetAll();
 

@@ -9,6 +9,7 @@ namespace IdentificationServer.Infraestructure.Interfaces
 {
     public interface IUriService
     {
-        Uri GetPostPaginationUri(PerfilQueryFilter filter, string actionUrl);
+        Uri GetPerfilPaginationUri(PerfilQueryFilter filter, string actionUrl);
+        Uri GetUsuarioPaginationUri(UsuarioQueryFilter filter, string actionUrl);
     }
 }

@@ -74,8 +74,6 @@ namespace IdentificationServer.WebApi
 
             });
 
-            
-
             services.AddMvc(options =>
             {
                 options.Filters.Add<ValidationFilter>();

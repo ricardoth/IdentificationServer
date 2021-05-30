@@ -17,7 +17,13 @@ namespace IdentificationServer.Infraestructure.Services
             _baseUri = baseUri;
         }
 
-        public Uri GetPostPaginationUri(PerfilQueryFilter filter, string actionUrl)
+        public Uri GetPerfilPaginationUri(PerfilQueryFilter filter, string actionUrl)
+        {
+            string url = $"{_baseUri}{actionUrl}";
+            return new Uri(url);
+        }
+
+        public Uri GetUsuarioPaginationUri(UsuarioQueryFilter filter, string actionUrl)
         {
             string url = $"{_baseUri}{actionUrl}";
             return new Uri(url);

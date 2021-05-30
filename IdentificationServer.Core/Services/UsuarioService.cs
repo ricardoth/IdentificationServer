@@ -1,5 +1,9 @@
-﻿using IdentificationServer.Core.Entities;
+﻿using IdentificationServer.Core.CustomEntities;
+using IdentificationServer.Core.Entities;
 using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.QueryFilters;
+using IdentificationServer.Infraestructure.Options;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +15,43 @@ namespace IdentificationServer.Core.Services
     public class UsuarioService : IUsuarioService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly PaginationOptions _paginationOptions;
 
-        public UsuarioService(IUnitOfWork unitOfWork)
+        public UsuarioService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> paginationOptions)
         {
             _unitOfWork = unitOfWork;
+            _paginationOptions = paginationOptions.Value;
         }
 
-        public IEnumerable<Usuario> GetUsuarios()
+        public PagedList<Usuario> GetUsuarios(UsuarioQueryFilter filtros)
         {
-            return _unitOfWork.UsuarioRepository.GetAll();
+            filtros.PageNumber = filtros.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filtros.PageNumber;
+            filtros.PageSize = filtros.PageSize == 0 ? _paginationOptions.DefaultPageSize : filtros.PageSize;
+
+            var usuarios = _unitOfWork.UsuarioRepository.GetAll();
+
+            if (filtros.Rut != null)
+            {
+                usuarios = usuarios.Where(x => x.Rut == filtros.Rut);
+            }
+
+            if (filtros.Nombre != null)
+            {
+                usuarios = usuarios.Where(x => x.Nombre.ToLower().Contains(filtros.Nombre.ToLower()));
+            }
+
+            if (filtros.ApellidoPaterno != null)
+            {
+                usuarios = usuarios.Where(x => x.ApellidoPaterno.ToLower().Contains(filtros.ApellidoPaterno.ToLower()));
+            }
+
+            if (filtros.EsActivo != null)
+            {
+                usuarios = usuarios.Where(x => x.EsActivo == filtros.EsActivo);
+            }
+
+            var pagedList = PagedList<Usuario>.Create(usuarios, filtros.PageNumber,filtros.PageSize);
+            return pagedList;
         }
 
         public async Task<Usuario> GetUsuario(int id)

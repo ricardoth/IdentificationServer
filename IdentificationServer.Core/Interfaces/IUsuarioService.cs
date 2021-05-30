@@ -1,4 +1,6 @@
-﻿using IdentificationServer.Core.Entities;
+﻿using IdentificationServer.Core.CustomEntities;
+using IdentificationServer.Core.Entities;
+using IdentificationServer.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace IdentificationServer.Core.Interfaces
 {
     public interface IUsuarioService
     {
-        IEnumerable<Usuario> GetUsuarios();
+        PagedList<Usuario> GetUsuarios(UsuarioQueryFilter filtros);
         Task<Usuario> GetUsuario(int id);
         Task Agregar(Usuario usuario);
         Task<bool> Actualizar(Usuario usuario);
