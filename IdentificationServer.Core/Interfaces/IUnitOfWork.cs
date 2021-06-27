@@ -11,6 +11,7 @@ namespace IdentificationServer.Core.Interfaces
     {
         IRepository<Perfil> PerfilRepository { get; } 
         IRepository<Usuario> UsuarioRepository { get; }
+        IRepository<Menu> MenuRepository { get; }
         IUsuarioPerfilRepository UsuarioPerfilRepository { get; }
         IAutenticationRepository AutenticationRepository{ get; }
 

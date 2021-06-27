@@ -10,6 +10,5 @@ namespace IdentificationServer.Core.Interfaces
     public interface IUsuarioPerfilRepository : IRepository<UsuarioPerfil>
     {
         Task<IEnumerable<UsuarioPerfil>> GetPerfilesByUsuario(int idUsuario);
-
     }
 }
