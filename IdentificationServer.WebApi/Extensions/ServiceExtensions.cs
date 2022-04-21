@@ -65,6 +65,7 @@ namespace IdentificationServer.WebApi.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:SecretKey"]))
                 };
             });
+
         }
     }
 }

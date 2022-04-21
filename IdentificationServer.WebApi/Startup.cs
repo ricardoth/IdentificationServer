@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
 using System.Text;
 
 namespace IdentificationServer.WebApi
@@ -39,10 +40,35 @@ namespace IdentificationServer.WebApi
             {
                 //options.SuppressModelStateInvalidFilter = true;
             });
+
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IdentificationServer.WebApi", Version = "v1" });
+                c.OperationFilter<AddRequiredHeaderParameter>();
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    In = ParameterLocation.Header,
+                //    Description = "Por favor, valide el token",
+                //    Name = "Authorization",
+                //    Type = SecuritySchemeType.Http,
+                //    BearerFormat = "JWT",
+                //    Scheme = "Bearer"
+                //});
+                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                //{
+                //    {
+                //        new OpenApiSecurityScheme
+                //        {
+                //            Reference = new OpenApiReference
+                //            {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //            }
+                //        },
+                //    new string[] { }
+                //    }
+                //});
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
