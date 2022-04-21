@@ -45,7 +45,7 @@ namespace IdentificationServer.WebApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IdentificationServer.WebApi", Version = "v1" });
-                c.OperationFilter<AddRequiredHeaderParameter>();
+                //c.OperationFilter<AddRequiredHeaderParameter>();
                 //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 //{
                 //    In = ParameterLocation.Header,
