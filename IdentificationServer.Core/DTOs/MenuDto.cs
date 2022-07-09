@@ -8,6 +8,7 @@ namespace IdentificationServer.Core.DTOs
 {
     public class MenuDto
     {
+        public int IdMenu { get; set; }
         public int IdApp { get; set; }
         public int Padre { get; set; }
         public string Nombre { get; set; }

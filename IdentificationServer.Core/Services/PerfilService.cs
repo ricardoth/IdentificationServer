@@ -69,7 +69,7 @@ namespace IdentificationServer.Core.Services
             perfilExistente.Nombre = perfil.Nombre;
             perfilExistente.EsActivo = perfil.EsActivo;
 
-            _unitOfWork.PerfilRepository.Update(perfil);
+            _unitOfWork.PerfilRepository.Update(perfilExistente);
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

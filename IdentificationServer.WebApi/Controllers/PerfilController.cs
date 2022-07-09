@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
 {
-    [Authorize(Roles = nameof(RoleType.Administrator))]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PerfilController : ControllerBase
@@ -28,9 +28,9 @@ namespace IdentificationServer.WebApi.Controllers
 
         public PerfilController(IPerfilService perfilService, IMapper mapper, IUriService uriService)
         {
-            this._perfilService = perfilService;
-            this._mapper = mapper;
-            this._uriService = uriService;
+            _perfilService = perfilService;
+            _mapper = mapper;
+            _uriService = uriService;
         }
 
         [HttpGet(Name = nameof(GetPerfils))]

@@ -17,6 +17,12 @@ namespace IdentificationServer.Infraestructure.Services
             _baseUri = baseUri;
         }
 
+        public Uri GetMenuPaginationUri(MenuQueryFilter filter, string actionUrl)
+        {
+            string url = $"{_baseUri}{actionUrl}";
+            return new Uri(url);
+        }
+
         public Uri GetPerfilPaginationUri(PerfilQueryFilter filter, string actionUrl)
         {
             string url = $"{_baseUri}{actionUrl}";
@@ -28,5 +34,7 @@ namespace IdentificationServer.Infraestructure.Services
             string url = $"{_baseUri}{actionUrl}";
             return new Uri(url);
         }
+
+
     }
 }

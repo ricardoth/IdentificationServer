@@ -11,5 +11,6 @@ namespace IdentificationServer.Infraestructure.Interfaces
     {
         Uri GetPerfilPaginationUri(PerfilQueryFilter filter, string actionUrl);
         Uri GetUsuarioPaginationUri(UsuarioQueryFilter filter, string actionUrl);
+        Uri GetMenuPaginationUri(MenuQueryFilter filter, string actionUrl);
     }
 }
