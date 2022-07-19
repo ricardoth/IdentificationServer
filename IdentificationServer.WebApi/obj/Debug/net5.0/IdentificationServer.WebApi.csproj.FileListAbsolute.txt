@@ -74,3 +74,4 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\web.config
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.csproj.AssemblyReference.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\Dapper.dll

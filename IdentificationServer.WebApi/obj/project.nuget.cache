@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "otVrEuehkKhEanctAdKvu/dx1480uCk2vdPAwOdtVXzBNMzUw3u80tZ4vqUOz3ZUXLnWz5VKJSEMBUVX9FrNpA==",
+  "dgSpecHash": "GdJBYuSKYjJ7LM1VG+rLx0iOAFb+KrKGo1AWc502D+KMWYfaKWFoIXxvQY2bAbeUMcGI6J0SOpPnYuIwri+7sg==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.WebApi\\IdentificationServer.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ricardo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Ricardo\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\fluentvalidation\\9.5.3\\fluentvalidation.9.5.3.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.5.3\\fluentvalidation.aspnetcore.9.5.3.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.5.3\\fluentvalidation.dependencyinjectionextensions.9.5.3.nupkg.sha512",

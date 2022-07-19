@@ -107,6 +107,8 @@ namespace IdentificationServer.WebApi
             {
                 options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
             });
+
+            services.ConfigureCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -123,7 +125,9 @@ namespace IdentificationServer.WebApi
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
+            app.UseCors(options => options.WithOrigins("*").AllowAnyMethod().AllowAnyHeader());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

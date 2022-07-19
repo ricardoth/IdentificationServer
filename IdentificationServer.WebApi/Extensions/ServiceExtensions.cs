@@ -26,6 +26,7 @@ namespace IdentificationServer.WebApi.Extensions
             services.AddTransient<IPerfilService, PerfilService>();
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IMenuUsuarioRepository, MenuUsuarioRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IPasswordService, PasswordService>();
@@ -66,6 +67,20 @@ namespace IdentificationServer.WebApi.Extensions
                 };
             });
 
+        }
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
         }
     }
 }

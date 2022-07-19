@@ -12,7 +12,6 @@ namespace IdentificationServer.Infraestructure.Repositories
 {
     public class UsuarioPerfilRepository : BaseRepository<UsuarioPerfil>, IUsuarioPerfilRepository
     {
-
         public UsuarioPerfilRepository(IdentificationBdContext context) : base(context){ }
 
         public async Task<IEnumerable<UsuarioPerfil>> GetPerfilesByUsuario(int idUsuario)

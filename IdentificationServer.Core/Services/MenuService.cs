@@ -23,6 +23,7 @@ namespace IdentificationServer.Core.Services
             _paginationOptions = paginationOptions.Value;
         }
 
+
         public PagedList<Menu> GetMenus(MenuQueryFilter filtros)
         {
             filtros.PageNumber = filtros.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filtros.PageNumber;
@@ -44,6 +45,7 @@ namespace IdentificationServer.Core.Services
 
             if (filtros.EsActivo != null)
                 menus = menus.Where(x => x.EsActivo == filtros.EsActivo);
+
 
             var pagedMenus = PagedList<Menu>.Create(menus, filtros.PageNumber, filtros.PageSize);
             return pagedMenus;
@@ -70,6 +72,8 @@ namespace IdentificationServer.Core.Services
             menuExistente.Url = menu.Url;
             menuExistente.UrlFriend = menu.UrlFriend;
             menuExistente.EsActivo = menu.EsActivo;
+            menuExistente.EsPadre = menu.EsPadre;
+            menuExistente.TieneHijos = menu.TieneHijos;
 
             _unitOfWork.MenuRepository.Update(menuExistente);
             await _unitOfWork.SaveChangesAsync();
