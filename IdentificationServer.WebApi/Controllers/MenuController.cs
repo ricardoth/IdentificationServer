@@ -76,7 +76,7 @@ namespace IdentificationServer.WebApi.Controllers
             return Ok(response);
         }
 
-        [HttpGet("/GetMenuUsuario/{rut}/{idApp}")]
+        [HttpGet("/api/GetMenuUsuario/{rut}/{idApp}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetMenuUsuario(int rut, int idApp)
@@ -89,9 +89,9 @@ namespace IdentificationServer.WebApi.Controllers
                 var response = new ApiResponse<IEnumerable<MenuDto>>(menusDto); 
                 return Ok(response);
             }
-        }
+        }   
 
-        [HttpGet("/GetMenuUsuarioDapper/{rut}/{idApp}")]
+        [HttpGet("/api/GetMenuUsuarioDapper/{rut}/{idApp}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetMenuUsuarioDapper(int rut, int idApp)
@@ -127,6 +127,7 @@ namespace IdentificationServer.WebApi.Controllers
             if (menuDto == null)
                 return NotFound();
 
+            menuDto.IdMenu = id;
             var menu = _mapper.Map<Menu>(menuDto);
             menu.Id = id;
             var result = await _menuService.Actualizar(menu);
