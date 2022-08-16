@@ -88,7 +88,7 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\bin\De
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\obj\Debug\net5.0\IdentificationServer.UnitTests.csprojAssemblyReference.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\obj\Debug\net5.0\IdentificationServer.UnitTests.csproj.AssemblyReference.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\obj\Debug\net5.0\IdentificationServer.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\obj\Debug\net5.0\IdentificationServer.UnitTests.AssemblyInfoInputs.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.UnitTests\obj\Debug\net5.0\IdentificationServer.UnitTests.AssemblyInfo.cs

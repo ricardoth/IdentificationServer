@@ -11,5 +11,6 @@ namespace IdentificationServer.Core.Interfaces
     {
         Task<IEnumerable<Menu>> GetMenuUsuario(int rut, int idApp);
         Task<IEnumerable<Menu>> GetMenuUsuarioDapper(int rut, int idApp);
+        Task<IEnumerable<Menu>> GetMenuPadre();
     }
 }

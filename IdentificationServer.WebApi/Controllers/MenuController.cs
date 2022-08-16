@@ -106,6 +106,23 @@ namespace IdentificationServer.WebApi.Controllers
             }
         }
 
+        [HttpGet("/api/GetMenuPadre")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetMenuPadre()
+        {
+            var menus = await _menuUsuarioService.GetMenuPadre();
+            if (menus == null)
+                return BadRequest();
+            else
+            {
+                var menusDto = _mapper.Map<IEnumerable<MenuDto>>(menus);
+                var response = new ApiResponse<IEnumerable<MenuDto>>(menusDto);
+                return Ok(response);
+            }
+
+        }
+
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]

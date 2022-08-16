@@ -46,5 +46,10 @@ namespace IdentificationServer.Infraestructure.Repositories
                 throw;
             }
         }
+
+        public async Task<IEnumerable<Menu>> GetMenuPadre()
+        {
+            return await _entities.Where(menu => menu.EsPadre == true).ToListAsync();
+        }
     }
 }
