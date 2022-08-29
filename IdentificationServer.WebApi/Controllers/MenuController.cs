@@ -6,6 +6,7 @@ using IdentificationServer.Core.Interfaces;
 using IdentificationServer.Core.QueryFilters;
 using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.WebApi.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MenuController : ControllerBase

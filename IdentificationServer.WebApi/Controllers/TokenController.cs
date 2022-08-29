@@ -41,8 +41,12 @@ namespace IdentificationServer.WebApi.Controllers
         private async Task<(bool, Autentication)> IsValidUser(UserLogin login)
         {
             var user = await _autenticationService.GetLoginByCredentials(login);
-            var isValid = _passwordService.Check(user.Password, login.Password);
-            return (isValid, user);
+            if (user != null)
+            {
+                var isValid = _passwordService.Check(user.Password, login.Password);
+                return (isValid, user);
+            }
+           return (false, null);
         }
 
         private string GenerateToken(Autentication autentication)
