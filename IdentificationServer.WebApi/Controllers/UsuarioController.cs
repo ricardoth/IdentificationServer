@@ -21,12 +21,14 @@ namespace IdentificationServer.WebApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
         private readonly IUriService _uriService;
 
-        public UsuarioController(IUsuarioService usuarioService, IMapper mapper, IUriService uriService)
+        public UsuarioController(IUsuarioService usuarioService, IUsuarioRepository usuarioRepository,IMapper mapper, IUriService uriService)
         {
             _usuarioService = usuarioService;
+            _usuarioRepository = usuarioRepository;
             _mapper = mapper;
             _uriService = uriService;
         }
@@ -61,6 +63,8 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int id)
         {
             var usuario = await _usuarioService.GetUsuario(id);
@@ -71,6 +75,8 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Post(UsuarioDto usuarioDto)
         {
             if (!ModelState.IsValid)
@@ -86,6 +92,9 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Put(int id,UsuarioDto usuarioDto)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDto);
@@ -97,12 +106,34 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _usuarioService.Eliminar(id);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
+
+        #region Endpoints de Procedimientos Almacenados
+
+        [HttpGet("/api/GetInfoUsuario/{user}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetInfoUsuario(string user)
+        { 
+            var usuario = await _usuarioRepository.GetInfoUsuario(user);
+            if (usuario == null)
+                return BadRequest();
+            else
+            {
+                var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
+                var response = new ApiResponse<UsuarioDto>(usuarioDto);
+                return Ok(response);
+            }
+
+        }
+        #endregion
 
     }
 }

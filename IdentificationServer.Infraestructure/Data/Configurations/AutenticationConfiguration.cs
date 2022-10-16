@@ -21,6 +21,7 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
             entity.Property(e => e.Id)
                 .HasColumnName("IdAutenticacion");
 
+
             entity.Property(e => e.User)
                 .HasColumnName("Usuario")
                 .IsRequired()

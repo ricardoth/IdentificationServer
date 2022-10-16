@@ -1,4 +1,6 @@
 ﻿using IdentificationServer.Core.Interfaces;
+using IdentificationServer.Core.Interfaces.InterfaceServices;
+using IdentificationServer.Core.Interfaces.Repositories;
 using IdentificationServer.Core.Services;
 using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.Infraestructure.Repositories;
@@ -23,9 +25,12 @@ namespace IdentificationServer.WebApi.Extensions
             services.AddScoped<IUsuarioPerfilRepository, UsuarioPerfilRepository>();
             services.AddTransient<IAutenticationService, AutenticationService>();
             services.AddTransient<IUsuarioPerfilService, UsuarioPerfilService>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IPerfilService, PerfilService>();
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IMenuUsuarioRepository, MenuUsuarioRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -18,6 +18,9 @@ namespace IdentificationServer.Infraestructure.Mappings
             CreateMap<Menu, MenuDto>()
                 .ForMember(dest => dest.IdMenu, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap();
+            CreateMap<Cliente, ClienteDto>()
+                .ForMember(dest => dest.IdCliente, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
             CreateMap<MenuPerfil, MenuPerfilDto>().ReverseMap();
             CreateMap<UsuarioPerfil, UsuarioPerfilDto>().ReverseMap();
             CreateMap<Autentication, AutenticationDto>().ReverseMap();

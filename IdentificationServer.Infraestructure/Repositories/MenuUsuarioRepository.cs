@@ -17,7 +17,6 @@ namespace IdentificationServer.Infraestructure.Repositories
         private readonly IdentificationBdContext _identificationBdContext;
         public MenuUsuarioRepository(IdentificationBdContext context) : base(context) { 
             _identificationBdContext = context;
-
         }
 
         public async Task<IEnumerable<Menu>> GetMenuUsuario(int rut, int idApp)
