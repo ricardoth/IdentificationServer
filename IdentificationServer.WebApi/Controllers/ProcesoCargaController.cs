@@ -30,7 +30,7 @@ namespace IdentificationServer.WebApi.Controllers
             var clientes = _mapper.Map<List<Cliente>>(request);
             var result = await _clienteService.CargarProcesoClientes(clientes);
             if (result)
-                return Ok(request);
+                return Ok(result);
             else
                 return BadRequest(result);
             

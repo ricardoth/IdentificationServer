@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PerfilController : ControllerBase

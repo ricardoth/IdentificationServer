@@ -6,7 +6,6 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\IdentificationServer.WebApi.runtimeconfig.json
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\IdentificationServer.WebApi.runtimeconfig.dev.json
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\IdentificationServer.WebApi.dll
-D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\ref\IdentificationServer.WebApi.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\IdentificationServer.WebApi.pdb
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -69,9 +68,15 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.MvcApplicationPartsAssemblyInfo.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\scopedcss\bundle\IdentificationServer.WebApi.styles.css
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\IdentificationServer.WebApi.StaticWebAssets.Manifest.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\IdentificationServer.WebApi.StaticWebAssets.Pack.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\msbuild.IdentificationServer.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\msbuild.build.IdentificationServer.WebApi.props
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.IdentificationServer.WebApi.props
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.IdentificationServer.WebApi.props
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.RazorTargetAssemblyInfo.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.csproj.CopyComplete
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.dll
-D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\ref\IdentificationServer.WebApi.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\refint\IdentificationServer.WebApi.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.pdb
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\IdentificationServer.WebApi.genruntimeconfig.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.WebApi\obj\Debug\net5.0\ref\IdentificationServer.WebApi.dll

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CoxrfbUlksCRlCZ5jvOvuCSln9S9L8yBu4oKSWJ6AMoQekKZ0uOIlUJUN/TzFrVQinNMx9O0K2jpaxmq6Di6xw==",
+  "dgSpecHash": "LoNaIB2NCcYpJDX3VK7TQpqlsKXKpMIh/0RjPOFyddLh8FDO1G+36Ksn4A1+q7dD9QZTWquSdkCmUdE8FAmL1A==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.Core\\IdentificationServer.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
-    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    "C:\\Users\\ricar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\ricar\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\ricar\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

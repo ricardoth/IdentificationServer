@@ -2,7 +2,6 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Infraestructure.runtimeconfig.json
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Infraestructure.runtimeconfig.dev.json
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Infraestructure.dll
-D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\ref\IdentificationServer.Infraestructure.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Infraestructure.pdb
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Core.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\bin\Debug\net5.0\IdentificationServer.Core.pdb
@@ -13,6 +12,7 @@ D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\IdentificationServer.Infraestructure.csproj.CoreCompileInputs.cache
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\IdentificationServer.Infraestructure.csproj.CopyComplete
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\IdentificationServer.Infraestructure.dll
-D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\ref\IdentificationServer.Infraestructure.dll
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\refint\IdentificationServer.Infraestructure.dll
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\IdentificationServer.Infraestructure.pdb
 D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\IdentificationServer.Infraestructure.genruntimeconfig.cache
+D:\Proyectos Net Core\IdentificationServer\IdentificationServer.Infraestructure\obj\Debug\net5.0\ref\IdentificationServer.Infraestructure.dll
