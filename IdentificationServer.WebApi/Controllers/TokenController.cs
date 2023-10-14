@@ -1,16 +1,4 @@
-﻿using IdentificationServer.Core.Entities;
-using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Infraestructure.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IdentificationServer.WebApi.Controllers
+﻿namespace IdentificationServer.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,11 +6,16 @@ namespace IdentificationServer.WebApi.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IAutenticationService _autenticationService;
+        private readonly IUserAuthService _userAuthService;
         private readonly IPasswordService _passwordService;
-        public TokenController(IConfiguration configuration, IAutenticationService autenticationService, IPasswordService passwordService)
+        public TokenController(IConfiguration configuration
+            ,IAutenticationService autenticationService
+            ,IPasswordService passwordService
+            ,IUserAuthService userAuthService)
         {
             _configuration = configuration;
             _autenticationService = autenticationService;
+            _userAuthService = userAuthService;
             _passwordService = passwordService;
         }
 
@@ -38,9 +31,10 @@ namespace IdentificationServer.WebApi.Controllers
             return NotFound();
         }
 
-        private async Task<(bool, Autentication)> IsValidUser(UserLogin login)
+        private async Task<(bool, Usuario)> IsValidUser(UserLogin login)
         {
-            var user = await _autenticationService.GetLoginByCredentials(login);
+            //var user = await _autenticationService.GetLoginByCredentials(login);
+            var user = await _userAuthService.GetLoginByCredentials(login);
             if (user != null)
             {
                 var isValid = _passwordService.Check(user.Password, login.Password);
@@ -49,7 +43,7 @@ namespace IdentificationServer.WebApi.Controllers
            return (false, null);
         }
 
-        private string GenerateToken(Autentication autentication)
+        private string GenerateToken(Usuario usuario)
         {
             //Headers
             var _symetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Authentication:SecretKey"]));
@@ -59,9 +53,9 @@ namespace IdentificationServer.WebApi.Controllers
             //Claims
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, autentication.UserName),
-                new Claim("User", autentication.User),
-                new Claim(ClaimTypes.Role, autentication.Role.ToString()),
+                new Claim(ClaimTypes.Name, usuario.Username),
+                new Claim("User", usuario.Username),
+                //new Claim(ClaimTypes.Role, autentication.Role.ToString()),
             };
 
             //Payload

@@ -32,6 +32,8 @@ namespace IdentificationServer.WebApi.Extensions
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IMenuUsuarioRepository, MenuUsuarioRepository>();
+            services.AddTransient<IUserAuthRepository, UserAuthRepository>();   
+            services.AddTransient<IUserAuthService, UserAuthService>();   
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IPasswordService, PasswordService>();

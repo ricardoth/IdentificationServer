@@ -50,6 +50,15 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
                 .HasMaxLength(20)
                 .IsUnicode(false);
 
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.Property(e => e.Password)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+
+
         }
     }
 }

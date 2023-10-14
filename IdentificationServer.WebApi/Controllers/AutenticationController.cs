@@ -1,43 +1,48 @@
-﻿using AutoMapper;
-using IdentificationServer.Core.DTOs;
-using IdentificationServer.Core.Entities;
-using IdentificationServer.Core.Enumerations;
-using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Infraestructure.Interfaces;
-using IdentificationServer.WebApi.Responses;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace IdentificationServer.WebApi.Controllers
+﻿namespace IdentificationServer.WebApi.Controllers
 {
     //[Authorize(Roles = nameof(RoleType.Administrator))]
-    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AutenticationController : ControllerBase
     {
         private readonly IAutenticationService _autenticationService;
+        private readonly IUsuarioService _userAuthService;
         private readonly IMapper _mapper;
         private readonly IPasswordService _passwordService;
 
-        public AutenticationController(IAutenticationService autenticationService, IMapper mapper, IPasswordService passwordService)
+        public AutenticationController(IAutenticationService autenticationService,
+            IUsuarioService userAuthService,
+            IMapper mapper, 
+            IPasswordService passwordService)
         {
             _autenticationService = autenticationService;
+            _userAuthService = userAuthService;
             _mapper = mapper;
             _passwordService = passwordService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(AutenticationDto autenticationDto)
-        {
-            var auth = _mapper.Map<Autentication>(autenticationDto);
-            auth.Password = _passwordService.Hash(auth.Password);
+        //[HttpPost]
+        //public async Task<IActionResult> Post(AutenticationDto autenticationDto)
+        //{
+        //    var auth = _mapper.Map<Autentication>(autenticationDto);
+        //    auth.Password = _passwordService.Hash(auth.Password);
 
-            await _autenticationService.RegisterUser(auth);
-            autenticationDto = _mapper.Map<AutenticationDto>(auth);
-            var response = new ApiResponse<AutenticationDto>(autenticationDto);
+        //    await _autenticationService.RegisterUser(auth);
+        //    autenticationDto = _mapper.Map<AutenticationDto>(auth);
+        //    var response = new ApiResponse<AutenticationDto>(autenticationDto);
+        //    return Ok(response);
+        //}
+
+        [HttpPost]
+        public async Task<IActionResult> Post(UsuarioDto usuarioDto)
+        { 
+            var authUser = _mapper.Map<Usuario>(usuarioDto);
+            authUser.Password = _passwordService.Hash(usuarioDto.Password);
+
+            await _userAuthService.Agregar(authUser);
+            usuarioDto = _mapper.Map<UsuarioDto>(authUser);
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
             return Ok(response);
         }
     }

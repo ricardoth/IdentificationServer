@@ -1,19 +1,4 @@
-﻿using AutoMapper;
-using IdentificationServer.Core.CustomEntities;
-using IdentificationServer.Core.DTOs;
-using IdentificationServer.Core.Entities;
-using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Core.QueryFilters;
-using IdentificationServer.Infraestructure.Interfaces;
-using IdentificationServer.WebApi.Responses;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace IdentificationServer.WebApi.Controllers
+﻿namespace IdentificationServer.WebApi.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -24,13 +9,19 @@ namespace IdentificationServer.WebApi.Controllers
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
         private readonly IUriService _uriService;
+        private readonly IPasswordService _passwordService;
 
-        public UsuarioController(IUsuarioService usuarioService, IUsuarioRepository usuarioRepository,IMapper mapper, IUriService uriService)
+        public UsuarioController(IUsuarioService usuarioService, 
+            IUsuarioRepository usuarioRepository,
+            IMapper mapper, 
+            IUriService uriService,
+            IPasswordService passwordService)
         {
             _usuarioService = usuarioService;
             _usuarioRepository = usuarioRepository;
             _mapper = mapper;
             _uriService = uriService;
+            _passwordService = passwordService;
         }
 
         [HttpGet(Name = nameof(GetUsuarios))]
@@ -84,6 +75,7 @@ namespace IdentificationServer.WebApi.Controllers
                 return BadRequest();
             }
             var usuario = _mapper.Map<Usuario>(usuarioDto);
+            usuario.Password = _passwordService.Hash(usuarioDto.Password);
             await _usuarioService.Agregar(usuario);
             usuarioDto = _mapper.Map<UsuarioDto>(usuario);
 
