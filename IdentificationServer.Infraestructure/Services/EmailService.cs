@@ -5,6 +5,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace IdentificationServer.Infraestructure.Services
 {
@@ -12,9 +13,9 @@ namespace IdentificationServer.Infraestructure.Services
     {
         private readonly EmailConfigOptions _emailConfig;
 
-        public EmailService(EmailConfigOptions emailConfig)
+        public EmailService(IOptions<EmailConfigOptions> emailConfig)
         {
-            _emailConfig = emailConfig;
+            _emailConfig = emailConfig.Value;
         }
 
         public async Task SendEmail(EmailDto emailDto)
