@@ -1,20 +1,10 @@
-﻿using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Core.Interfaces.InterfaceServices;
-using IdentificationServer.Core.Interfaces.Repositories;
+﻿using IdentificationServer.Core.Interfaces.Repositories;
 using IdentificationServer.Core.Services;
-using IdentificationServer.Infraestructure.Interfaces;
 using IdentificationServer.Infraestructure.Repositories;
 using IdentificationServer.Infraestructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdentificationServer.WebApi.Extensions
 {
@@ -37,6 +27,8 @@ namespace IdentificationServer.WebApi.Extensions
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IPasswordService, PasswordService>();
+            services.AddSingleton<IEmailService, EmailService>();   
+
             services.AddSingleton<IUriService>(provider =>
             {
                 var accesor = provider.GetRequiredService<IHttpContextAccessor>();

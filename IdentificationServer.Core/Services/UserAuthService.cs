@@ -17,5 +17,10 @@ namespace IdentificationServer.Core.Services
         {
             return await _userAuthRepository.GetLoginByCredentials(login);
         }
+
+        public async Task<Usuario> GetLoginByEmail(UserResetPassword login)
+        {
+            return await _userAuthRepository.GetLoginByEmail(login);
+        }
     }
 }

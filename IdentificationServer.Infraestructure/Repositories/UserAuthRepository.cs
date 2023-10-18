@@ -14,5 +14,10 @@ namespace IdentificationServer.Infraestructure.Repositories
         {
             return await _entities.FirstOrDefaultAsync(x => x.Username == login.User);
         }
+
+        public async Task<Usuario> GetLoginByEmail(UserResetPassword login) 
+        {
+            return await _entities.FirstOrDefaultAsync(x => x.Correo == login.Correo);
+        }
     }
 }

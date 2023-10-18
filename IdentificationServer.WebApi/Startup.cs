@@ -51,6 +51,7 @@ namespace IdentificationServer.WebApi
 
             services.Configure<PaginationOptions>(Configuration.GetSection("Pagination"));
             services.Configure<PasswordOptions>(Configuration.GetSection("PasswordOptions"));
+            services.Configure<EmailConfigOptions>(Configuration.GetSection("EmailConfig"));
 
             services.AddDbContext<IdentificationBdContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentificationBd")));
