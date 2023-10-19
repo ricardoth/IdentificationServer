@@ -23,6 +23,14 @@ namespace IdentificationServer.Infraestructure.Data.Configurations
                 .HasMaxLength(100)
                 .IsUnicode(false);
 
+            entity.Property(e => e.UrlSitio)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+
+            entity.Property(e => e.UrlCambioContrasena)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+
             entity.Property(e => e.Nombre)
                 .IsRequired()
                 .HasMaxLength(50)

@@ -6,5 +6,6 @@ namespace IdentificationServer.Infraestructure.Interfaces
     public interface IEmailService
     {
         Task SendEmail(EmailDto emailDto);
+        string GetTemplateResetPassword(string urlCambioContrasena);
     }
 }

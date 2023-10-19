@@ -20,6 +20,7 @@ namespace IdentificationServer.WebApi.Extensions
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IAppService, AppService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IMenuUsuarioRepository, MenuUsuarioRepository>();
             services.AddTransient<IUserAuthRepository, UserAuthRepository>();   

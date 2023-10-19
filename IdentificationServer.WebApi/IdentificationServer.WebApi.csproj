@@ -25,6 +25,10 @@
     <ProjectReference Include="..\IdentificationServer.Infraestructure\IdentificationServer.Infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Templates\" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://gitlab.com/-/snippets/2062623/raw/master/foundryvtt_manifest_schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -8,6 +8,7 @@
     {
         private readonly IUserAuthService _userAuthService;
         private readonly IUsuarioService _usuarioService;
+        private readonly IAppService _appService;
         private readonly IMapper _mapper;
         private readonly IPasswordService _passwordService;
         private readonly IEmailService _emailService;   
@@ -17,6 +18,7 @@
             IMapper mapper, 
             IPasswordService passwordService,
             IUsuarioService usuarioService,
+            IAppService appService,
             IEmailService emailService)
         {
             _userAuthService = userAuthService;
@@ -24,6 +26,7 @@
             _passwordService = passwordService;
             _usuarioService = usuarioService;
             _emailService = emailService;
+            _appService = appService;
         }
 
         [HttpPost]
@@ -41,9 +44,23 @@
         [HttpPost("RequestChangePassword")]
         public async Task<IActionResult> RequestChangePassword([FromBody] RequestChangePasswordDto changePasswordDto)
         {
-            var emailDto = new EmailDto(changePasswordDto.Correo, "Ha solicitado restablecer su contraseña", "<div><h1><button>Restablezca su Contraseña</button></h1></div>");
+            var userResetPassword = new UserResetPassword()
+            { 
+                Correo = changePasswordDto.Correo,  
+            };
+
+            var usuario = await _userAuthService.GetLoginByEmail(userResetPassword);
+            if (usuario == null)
+                return NotFound("El correo proporcionado no coincide con nuestros registros");
+
+            var app = await _appService.GetAppById(changePasswordDto.IdApp);
+            if (app == null)
+                return NotFound("El Usuario no tiene acceso a la aplicación");
+
+            var templateEmail = _emailService.GetTemplateResetPassword(app.UrlCambioContrasena);
+            var emailDto = new EmailDto(changePasswordDto.Correo, "Ha solicitado restablecer su contraseña", templateEmail);
             await _emailService.SendEmail(emailDto);
-            return Ok(emailDto);
+            return Ok(changePasswordDto);
         }
 
         [HttpPost("ResetPassword")]

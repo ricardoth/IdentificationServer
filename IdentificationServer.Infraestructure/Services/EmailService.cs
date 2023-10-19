@@ -6,6 +6,7 @@ using MailKit.Net.Smtp;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
+using System.IO;
 
 namespace IdentificationServer.Infraestructure.Services
 {
@@ -37,6 +38,15 @@ namespace IdentificationServer.Infraestructure.Services
                 var response = await smtp.SendAsync(email);
                 smtp.Disconnect(true);
             };
+        }
+
+        public string GetTemplateResetPassword(string urlCambioContrasena)
+        {
+            string currentDirectory = Directory.GetCurrentDirectory() + "\\Templates";
+            string htmlTemplatePath = Path.Combine(currentDirectory, "resetPasswordTemplate.html");
+            string htmlTemplate = File.ReadAllText(htmlTemplatePath);
+            string htmlTemplateEmail = htmlTemplate.Replace("{UrlCambioContrasena}", urlCambioContrasena);
+            return htmlTemplateEmail;
         }
     }
 }

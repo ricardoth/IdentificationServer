@@ -16,6 +16,7 @@ namespace IdentificationServer.Infraestructure.Repositories
         private readonly IRepository<Usuario> _usuarioRepository;
         private readonly IRepository<Menu> _menuRepository;
         private readonly IRepository<Cliente> _clienteRepository;
+        private readonly IRepository<App> _appRepository;
         private readonly IUsuarioPerfilRepository _usuarioPerfilRepository;
         private readonly IAutenticationRepository _autenticationRepository;
 
@@ -28,6 +29,7 @@ namespace IdentificationServer.Infraestructure.Repositories
         public IRepository<Usuario> UsuarioRepository => _usuarioRepository ?? new BaseRepository<Usuario>(_context);
         public IRepository<Menu> MenuRepository => _menuRepository ?? new BaseRepository<Menu>(_context);
         public IRepository<Cliente> ClienteRepository => _clienteRepository ?? new BaseRepository<Cliente>(_context);
+        public IRepository<App> AppRepository => _appRepository ?? new BaseRepository<App>(_context);
         public IUsuarioPerfilRepository UsuarioPerfilRepository => _usuarioPerfilRepository ?? new UsuarioPerfilRepository(_context);
         public IAutenticationRepository AutenticationRepository => _autenticationRepository ?? new AutenticationRepository(_context);
 
