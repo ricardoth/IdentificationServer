@@ -42,6 +42,8 @@
         }
 
         [HttpPost("RequestChangePassword")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> RequestChangePassword([FromBody] RequestChangePasswordDto changePasswordDto)
         {
             var userResetPassword = new UserResetPassword()
@@ -64,6 +66,9 @@
         }
 
         [HttpPost("ResetPassword")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> ResetPassword(UserResetPasswordDto userPasswordDto) 
         {
             var userPassword = _mapper.Map<UserResetPassword>(userPasswordDto);
@@ -71,8 +76,11 @@
             if (usuario == null)
                 return NotFound("El usuario proporcionado no coincide con nuestros registros");
 
-            if (_passwordService.Hash(usuario.Password) != _passwordService.Hash(userPassword.OldPassword))
-                return BadRequest("La contraseña proporcionada, no coincide con la contraseña del usuario ingresado, por favor verifique la contraseña");
+            if (!_passwordService.Check(_passwordService.Hash(userPasswordDto.ConfirmPassword), userPassword.NewPassword))
+                return BadRequest("La contraseña debe ser igual a la de confirmación. Por favor verifique su contraseña");
+
+            if (_passwordService.Check(usuario.Password, userPassword.NewPassword))
+                return BadRequest("La contraseña no puede ser igual a la anterior");
 
             usuario.Password = _passwordService.Hash(userPassword.NewPassword);
             var result = await _usuarioService.Actualizar(usuario);
