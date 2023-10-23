@@ -1,15 +1,4 @@
-﻿using AutoMapper;
-using IdentificationServer.Core.DTOs;
-using IdentificationServer.Core.Entities;
-using IdentificationServer.Core.Interfaces;
-using IdentificationServer.Core.Interfaces.InterfaceServices;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace IdentificationServer.WebApi.Controllers
+﻿namespace IdentificationServer.WebApi.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
