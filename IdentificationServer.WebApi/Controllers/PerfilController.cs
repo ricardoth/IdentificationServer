@@ -63,6 +63,7 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetPerfil(int id)
         {
             var perfil = await _perfilService.GetPerfil(id);

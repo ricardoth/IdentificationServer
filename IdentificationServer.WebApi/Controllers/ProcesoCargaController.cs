@@ -25,6 +25,8 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CargarProceso([FromBody] List<ClienteDto> request)
         {
             var clientes = _mapper.Map<List<Cliente>>(request);

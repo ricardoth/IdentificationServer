@@ -30,6 +30,7 @@
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Post(UsuarioDto usuarioDto)
         { 
             var authUser = _mapper.Map<Usuario>(usuarioDto);

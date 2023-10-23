@@ -29,6 +29,7 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public IActionResult GetUsuarioPerfil()
         {
             var usuarioPerfiles = _usuarioPerfilService.GetUsuarioPerfils();
@@ -39,6 +40,7 @@ namespace IdentificationServer.WebApi.Controllers
 
         [HttpGet]
         [Route("GetPerfilesByUsuario")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetPerfilesByUsuario(int id)
         {
             var usuarioPerfiles = await _usuarioPerfilRepository.GetPerfilesByUsuario(id);
@@ -48,6 +50,8 @@ namespace IdentificationServer.WebApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Post(UsuarioPerfilDto usuarioPerfilDto)
         {
            

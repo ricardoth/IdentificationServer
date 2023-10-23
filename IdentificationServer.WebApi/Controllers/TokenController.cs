@@ -20,6 +20,8 @@
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Authentication(UserLogin login)
         {
             var validation = await IsValidUser(login);
@@ -33,7 +35,6 @@
 
         private async Task<(bool, Usuario)> IsValidUser(UserLogin login)
         {
-            //var user = await _autenticationService.GetLoginByCredentials(login);
             var user = await _userAuthService.GetLoginByCredentials(login);
             if (user != null)
             {
@@ -55,7 +56,6 @@
             {
                 new Claim(ClaimTypes.Name, usuario.Username),
                 new Claim("User", usuario.Username),
-                //new Claim(ClaimTypes.Role, autentication.Role.ToString()),
             };
 
             //Payload
