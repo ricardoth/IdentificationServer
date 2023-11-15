@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fs0OnvYRE90JEWZJMCdzQFwOtWx1tCSwC1FGpHEuT/C8+Hj+YR0e51GiMPC2H+2A5zLCTDwKK9BN+TTeaRPoNA==",
+  "dgSpecHash": "jXvpYZ3kFDLbe7Uy7LZjzixPNEZ4OTPz8960pNJrnIxgxgsTGyNuJtOkxSw8sBublK8JdaCrvJ7zXvQO4lLvnQ==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.WebApi\\IdentificationServer.WebApi.csproj",
   "expectedPackageFiles": [

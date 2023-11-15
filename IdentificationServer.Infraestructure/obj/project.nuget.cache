@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DCCI4UAvEw6Lb/A+9MPX6NEZyIZhJ42bMKFaBJcDQFrfBPCnnmVvAFkcFUO84kFcjnRNnlwfMZIBd5KuwsQqkQ==",
+  "dgSpecHash": "m2uMNS5TScOtBHY3S7hZ9kRImVyeqwEpX0zapEObaQhijqbdIHzGOyNiNoJbEsZYAyFOrYpsf4xZQ3GU/IdbFQ==",
   "success": true,
   "projectFilePath": "D:\\Proyectos Net Core\\IdentificationServer\\IdentificationServer.Infraestructure\\IdentificationServer.Infraestructure.csproj",
   "expectedPackageFiles": [
